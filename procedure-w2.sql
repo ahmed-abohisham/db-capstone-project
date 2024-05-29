@@ -114,4 +114,14 @@ CREATE DEFINER='admin1'@'%' PROCEDURE UpdateBooking(booking_id INT, booking_date
 BEGIN
 UPDATE bookings SET BookingSlot = booking_date WHERE BookingID = booking_id; 
 SELECT CONCAT("Booking", booking_id, "updated") AS "Confirmation";
-END
+END;
+
+-- DELIMITER //
+create definer='admin1'@'%' PROCEDURE CancelBooking(booking_id INT)
+BEGIN
+delete from bookings
+where BoockingID = booking_id; 
+SELECT CONCAT("Booking", booking_id, "cancelled") AS "Confirmation";
+end;
+
+-- DELIMITER;
