@@ -24,12 +24,12 @@ END //
 DELIMITER ;
 
 INSERT INTO bookings (BoockingID, TableNumber, BookingSlot, 
-CustomerID, StaffID)
+CustomerID)
 VALUES
-(1,5,'2022-10-10',1,1),
-(2,3,'2022-11-12',3,3),
-(3,2,'2022-10-11',2,4),
-(4,2,'2022-10-13',4,2);
+(1,5,'2022-10-10',1),
+(2,3,'2022-11-12',3),
+(3,2,'2022-10-11',2),
+(4,2,'2022-10-13',4);
 
 
 DELIMITER //
@@ -87,3 +87,24 @@ END //
 
 DELIMITER ;
 
+
+DELIMITER //
+create procedure AddBooking(
+booking_id int,
+table_numbre int,
+booking_date date,
+customer_id int)
+begin
+insert into bookings(
+            BoockingID,
+            TableNumber,
+            BookingSlot,
+            CustomerID) values(
+            booking_id,
+            table_numbre,
+            booking_date,
+            customer_id);
+select "New booking added" as "Confirmation";
+end //
+
+DELIMITER 
